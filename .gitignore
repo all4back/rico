@@ -1,0 +1,14 @@
+# DEPENDENCIES
+node_modules
+
+# BUILD
+dist
+public
+
+# TEMP / LOGGING
+.DS_Store
+._*
+npm-debug.log
+
+# ENVIRONMENT
+.env

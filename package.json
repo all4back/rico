@@ -1,0 +1,20 @@
+{
+  "name": "rico",
+  "version": "0.1.0-pre",
+  "description": "Synchronised data queries",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "node bin/test"
+  },
+  "devDependencies": {
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.2.0",
+    "webpack": "^1.7.3"
+  },
+  "dependencies": {
+    "babel": "^4.7.16",
+    "node-uuid": "^1.4.3",
+    "rx": "^2.4.7"
+  }
+}
