@@ -1,5 +1,5 @@
 // Valid resource paths: /foo, /foo/bar
-const RESOURCE_PATH = /^\/[^\/]+(?:\/[^\/]+)?$/;
+const RESOURCE_PATH = /^\/?[^\/]+(?:\/[^\/]+)?\/?$/;
 
 /**
  * @param {String} path
@@ -10,7 +10,11 @@ export var parsePath = function(path) {
         throw new Error(`Invalid resource path: "${path}"`);
     }
 
-    var [ collection, id ] = path.split("/").slice(1);
+    if (path.charAt(0) === "/") {
+        path = path.substring(1);
+    }
+
+    var [ collection, id ] = path.split("/");
 
     return { collection, id };
 };
