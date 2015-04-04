@@ -1,4 +1,5 @@
 import { Observable } from "rx";
+import { parsePath } from "../helpers/path";
 
 /**
  * @param {Object} message
