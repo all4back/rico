@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+require("dotenv").load();
+require("../dist/server").listen(
+    process.env.PORT,
+    process.env.HOST
+);
