@@ -31,7 +31,7 @@ export class Socket {
         var messages$ =
             Observable.fromEvent(this.socket, "message")
                 .takeUntil(close$)
-                .map(evt => evt.data)
+                .map(evt => JSON.parse(evt.data ? evt.data : evt))
                 .filter(data => this.callbacks.has(data.reqId));
 
         if (this.opts.onOpen) {
@@ -42,11 +42,11 @@ export class Socket {
             close$.subscribe(this.opts.onClose);
         }
 
-        messages$.forEach(
+        this.subscription = messages$.forEach(
             message => {
                 var callback = this.callbacks.get(message.reqId);
                 this.callbacks.delete(message.reqId);
-                callback(message.data);
+                callback(new Response(message.data));
             }
         );
     }
@@ -71,5 +71,11 @@ export class Socket {
 
             this.callbacks.set(reqId, resolve);
         });
+    }
+
+    close() {
+        if (this.subscription) {
+            this.subscription.dispose();
+        }
     }
 }

@@ -10,5 +10,6 @@ require("babel/register");
 
 reporter.run([
     path.join(__dirname, "../test"),
+    path.join(__dirname, "../test/core"),
     path.join(__dirname, "../test/helpers")
 ]);
